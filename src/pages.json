@@ -37,11 +37,11 @@
       },
       {
         "pagePath": "pages/index/index1",
-        "text": "组件"
+        "text": "工作台"
       },
       {
         "pagePath": "pages/index/index2",
-        "text": "接口"
+        "text": "个人中心"
       }
     ]
   },
