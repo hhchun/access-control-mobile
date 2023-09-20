@@ -6,7 +6,8 @@
 <script setup lang="ts">
 import { onErrorCaptured, ref } from "vue";
 import type { UniPopupInstance } from "@uni-helper/uni-ui-types";
-import { useCounterStore } from '@/stores/counter'
+import { useCounterStore } from '@/stores/counter';
+import request from "@/utils/request/request";
 const counter = useCounterStore()
 counter.count++
 

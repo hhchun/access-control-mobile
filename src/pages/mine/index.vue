@@ -1,6 +1,6 @@
 <template>
   <view>
-    <text>index2</text>
+    <text>我的</text>
   </view>
 </template>
 <script setup lang="ts">

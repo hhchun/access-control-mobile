@@ -9,46 +9,52 @@
     {
       "path": "pages/index/index",
       "style": {
-        "navigationBarTitleText": "uni-app"
+        "navigationBarTitleText": "首页"
       }
     },
     {
-      "path": "pages/index/index1",
+      "path": "pages/workbench/index",
       "style": {
-        "navigationBarTitleText": "uni-app1"
+        "navigationBarTitleText": "工作台"
       }
     },
     {
-      "path": "pages/index/index2",
+      "path": "pages/mine/index",
       "style": {
-        "navigationBarTitleText": "uni-app1"
+        "navigationBarTitleText": "我的"
       }
     }
   ],
   "tabBar": {
-    "color": "#7A7E83",
-    "selectedColor": "#3cc51f",
-    "borderStyle": "white",
+    "color": "#8E8E93",
+    "selectedColor": "#2e5343",
+    "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "首页",
+        "iconPath": "static/tab-bar/index.png",
+        "selectedIconPath": "static/tab-bar/index-selected.png"
       },
       {
-        "pagePath": "pages/index/index1",
-        "text": "工作台"
+        "pagePath": "pages/workbench/index",
+        "text": "工作台",
+        "iconPath": "static/tab-bar/workbench.png",
+        "selectedIconPath": "static/tab-bar/workbench-selected.png"
       },
       {
-        "pagePath": "pages/index/index2",
-        "text": "个人中心"
+        "pagePath": "pages/mine/index",
+        "text": "我的",
+        "iconPath": "static/tab-bar/mine.png",
+        "selectedIconPath": "static/tab-bar/mine-selected.png"
       }
     ]
   },
   "globalStyle": {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "uni-app",
-    "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "权限控制",
+    "navigationBarBackgroundColor": "#6bae91",
+    "backgroundColor": "#6bae91"
   }
 }

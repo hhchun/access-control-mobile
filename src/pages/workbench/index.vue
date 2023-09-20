@@ -1,6 +1,6 @@
 <template>
   <view>
-    <text>index1</text>
+    <text>工作台</text>
   </view>
 </template>
 <script setup lang="ts">
