@@ -1,0 +1,29 @@
+@font-face {
+  font-family: "mine"; /* Project id 4295992 */
+  src: url('mine.ttf?t=1697794061895') format('truetype');
+}
+
+.mine {
+  font-family: "mine" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-security:before {
+  content: "\e8ab";
+}
+
+.icon-help:before {
+  content: "\e8ac";
+}
+
+.icon-share:before {
+  content: "\e8b0";
+}
+
+.icon-community:before {
+  content: "\e8b8";
+}
+

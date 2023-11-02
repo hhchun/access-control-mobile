@@ -1,11 +1,7 @@
 import axios from "axios";
 import adapter from "./adapter";
 
-import type {
-  AxiosHeaders,
-  Method,
-  RawAxiosRequestHeaders,
-} from "axios";
+import type { AxiosHeaders, Method, RawAxiosRequestHeaders } from "axios";
 
 const baseURL = import.meta.env.VITE_BASE_URL;
 const timeout = 10000;
@@ -28,14 +24,13 @@ instance.interceptors.response.use(
     return error;
   }
 );
-
-export interface ResultType<D = any> {
+interface ResponseBody<D = any> {
   code: number;
   message: string;
   data?: D;
 }
 
-export interface RequestConfig<D = any> {
+interface RequestConfig<D = any> {
   url: string;
   method?: Method;
   data?: D;
@@ -43,8 +38,12 @@ export interface RequestConfig<D = any> {
   headers?: RawAxiosRequestHeaders | AxiosHeaders;
 }
 
-export default function <R = any>(config: RequestConfig) {
-  return instance<ResultType<R>>(config);
+function request<D = any>(config: RequestConfig) {
+  return instance<ResponseBody<D>>(config);
 }
 
-export { instance };
+export default request;
+
+export { instance, baseURL, timeout };
+
+export type { ResponseBody, RequestConfig };

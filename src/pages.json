@@ -9,7 +9,8 @@
     {
       "path": "pages/index/index",
       "style": {
-        "navigationBarTitleText": "首页"
+        "navigationBarTitleText": "首页",
+        "enablePullDownRefresh": true
       }
     },
     {
@@ -21,15 +22,25 @@
     {
       "path": "pages/mine/index",
       "style": {
-        "navigationBarTitleText": "我的",
-        "navigationBarBackgroundColor": "#ffffff",
-        "navigationBarTextStyle": "black"
+        "navigationBarTitleText": "我的"
+      }
+    },
+    {
+      "path": "pages/mine/login/account-login",
+      "style": {
+        "navigationBarTitleText": "账号登录"
+      }
+    },
+    {
+      "path": "pages/workbench/access/label/index",
+      "style": {
+        "navigationBarTitleText": "标签管理"
       }
     }
   ],
   "tabBar": {
-    "color": "#8E8E93",
-    "selectedColor": "#2e5343",
+    "color": "#999999",
+    "selectedColor": "#000000",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [
@@ -54,9 +65,9 @@
     ]
   },
   "globalStyle": {
-    "navigationBarTextStyle": "white",
+    "navigationBarTextStyle": "black",
     "navigationBarTitleText": "权限控制",
-    "navigationBarBackgroundColor": "#6bae91",
-    "backgroundColor": "#6bae91"
+    "navigationBarBackgroundColor": "#f5f7f9",
+    "backgroundColor": "#f5f7f9"
   }
 }

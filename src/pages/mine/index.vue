@@ -1,45 +1,36 @@
-import { ref } from 'vue';
 <template>
   <view class="head">
-    <view v-if="!loginStatus" class="login">
-      <text class="welcome">Hi，欢迎使用~ </text>
-      <button class="now-login" @click="login">
-        马上登录
-      </button>
-    </view>
-    <view v-if="loginStatus" class="content">
+    <view class="content">
       <image class="avatar" src="../../static/logo.png" />
       <view class="information">
-        <text class="nickname">用户</text>
-        <text class="phone">17374883612</text>
+        <text class="nickname">欢迎使用</text>
+        <text class="phone">成为会员可体验完整功能</text>
       </view>
-    </view>
-    <view class="privilege">
-      <text class="privilege-title">
-        免费开通会员，即享体验功能
-      </text>
-      <button class="privilege-purchase">
-        去开通
+      <button v-if="!loginStatus" class="now-login" @click="login">
+        去登录
       </button>
     </view>
   </view>
   <view class="main">
     <view class="ability">
-      <view class="ability-item">
-        <text class="ability-item-label">问题反馈</text>
-        <uni-icons type="forward" size="25" color="#aeb3c3" />
-      </view>
-      <view class="ability-item">
-        <text class="ability-item-label">分享系统</text>
-        <uni-icons type="forward" size="25" color="#aeb3c3" />
-      </view>
-      <view class="ability-item">
-        <text class="ability-item-label">仓库地址</text>
-        <uni-icons type="forward" size="25" color="#aeb3c3" />
-      </view>
-      <view v-if="loginStatus" class="ability-item">
-        <text class="ability-item-label">修改密码</text>
-        <uni-icons type="forward" size="25" color="#aeb3c3" />
+      <text class="ability-title">常用功能</text>
+      <view class="ability-items">
+        <view class="ability-item">
+          <i class="mine icon-help ability-item-icon"></i>
+          <text class="ability-item-label">问题反馈</text>
+        </view>
+        <view class="ability-item">
+          <i class="mine icon-share ability-item-icon"></i>
+          <text class="ability-item-label">分享系统</text>
+        </view>
+        <view class="ability-item">
+          <i class="mine icon-community ability-item-icon"></i>
+          <text class="ability-item-label">仓库地址</text>
+        </view>
+        <view v-if="loginStatus" class="ability-item">
+          <i class="mine icon-security ability-item-icon"></i>
+          <text class="ability-item-label">修改密码</text>
+        </view>
       </view>
     </view>
   </view>
@@ -48,40 +39,45 @@ import { ref } from 'vue';
       退出登录
     </button>
   </view>
+  <view>
+    <Login ref="_login" @success="loginSuccessCallback"></Login>
+  </view>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue';
-let loginStatus = ref(false)
+import { Login, type LoginModal, type SuccessResult as LoginSuccessResult } from "@/pages/mine/login";
+
+const _login = ref<LoginModal>();
+
+let loginStatus = ref(false);
 
 function login() {
-  loginStatus.value = true;
+  _login.value?.open();
 }
 
 function logout() {
   loginStatus.value = false;
 }
 
+function loginSuccessCallback(result: LoginSuccessResult) {
+  console.log("loginSuccessCallback", result.key);
+  _login.value?.close();
+  loginStatus.value = true;
+}
+
 </script>
 <style>
+@import "@/static/iconfont/mine.css";
+
 .head {
-  padding: 0px 25rpx 25rpx;
+  padding: 35rpx 32rpx 0rpx;
   height: auto;
-  background-color: white;
 }
 
 .login {
   height: 160rpx;
   display: flex;
   align-items: center;
-}
-
-.logout {
-  width: 230rpx;
-  height: 80rpx;
-  background-color: white;
-  margin-top: 40rpx;
-  border-radius: 40rpx;
-  font-size: 32rpx;
 }
 
 .content {
@@ -91,23 +87,24 @@ function logout() {
 }
 
 .avatar {
-  width: 120rpx;
-  height: 120rpx;
+  width: 115rpx;
+  height: 115rpx;
   border-radius: 50%;
 }
 
 .information {
   display: flex;
   flex-direction: column;
-  margin-left: 15rpx;
+  padding: 19rpx 32rpx 6.5rpx
 }
 
 .nickname {
-  font-size: 35rpx;
+  font-size: 45rpx;
   font-weight: bold;
 }
 
 .phone {
+  font-size: 30rpx;
   color: #abb0c0;
 }
 
@@ -118,61 +115,60 @@ function logout() {
 
 .now-login {
   display: inline-block;
-  width: 200rpx;
-  height: 75rpx;
-  line-height: 75rpx;
-  background-color: #6bae91;
-  color: white;
-  border-radius: 40rpx;
-  box-shadow: 0 15rpx 50rpx #add2c2;
-}
-
-.privilege {
-  height: 130rpx;
-  background-color: #fbd97b;
-  border-radius: 35rpx 35rpx 0rpx 0rpx;
-  padding: 0px 25rpx;
-  display: flex;
-  align-items: center;
-}
-
-.privilege-purchase {
-  display: inline-block;
-  width: 150rpx;
-  height: 60rpx;
-  line-height: 60rpx;
+  width: 145rpx;
+  height: 58rpx;
+  line-height: 58rpx;
+  font-size: 28rpx;
   background-color: white;
-  color: #653c00;
-  border-radius: 30rpx;
-  border: none;
-  font-size: 30rpx;
+  border-radius: 34rpx;
+  padding: 0rpx;
+  background-color: #4fa892;
+  color: white;
 }
 
-.privilege-title {
-  flex: auto;
-  font-size: 35rpx;
-  color: white;
+.logout {
+  width: 230rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: white;
+  margin-top: 40rpx;
+  border-radius: 40rpx;
 }
 
 .main {
-  padding: 25rpx 25rpx 0rpx;
+  padding: 32rpx 32rpx 0rpx;
 }
 
 .ability {
-  border-radius: 30rpx;
+  border-radius: 32rpx;
   background-color: white;
-  padding: 25rpx;
+  padding: 32rpx;
+}
+
+.ability-title {
+  font-size: 36rpx;
+}
+
+.ability-items {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .ability-item {
-  height: 75rpx;
-  line-height: 75rpx;
-  font-size: 32rpx;
+  width: 25%;
   display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 40rpx;
+}
+
+.ability-item-icon {
+  font-size: 55rpx;
 }
 
 .ability-item-label {
-  flex: auto;
+  margin-top: 6rpx;
+  font-size: 26rpx;
 }
 
 button:after {
@@ -180,6 +176,6 @@ button:after {
 }
 
 page {
-  background-color: #f7f7f7;
+  background-color: #f5f7f9;
 }
 </style>

@@ -1,17 +1,9 @@
-import { buildURL, buildFullPath, settle } from "@/typings/axios-lib";
+import { buildURL, buildFullPath, settle } from "@/typings/extend/axios";
 import { AxiosHeaders, type AxiosAdapter, type AxiosResponse } from "axios";
-
-export type GeneralCallbackResult = {
-  data: any;
-  statusCode: number;
-  errMsg: string;
-  header: any;
-  cookies: Array<any>;
-};
 
 const adapter: AxiosAdapter = function (config) {
   return new Promise((resolve, reject) => {
-    const method = (config.method && config.method.toUpperCase()) as
+    const method = config.method?.toUpperCase() as
       | "OPTIONS"
       | "GET"
       | "HEAD"
@@ -32,8 +24,7 @@ const adapter: AxiosAdapter = function (config) {
       header: header,
       data: config.data,
       responseType: config.responseType,
-      complete: (result_) => {
-        const result = result_ as GeneralCallbackResult;
+      complete: (result) => {
         const response: AxiosResponse = {
           status: result.statusCode,
           config: config,
