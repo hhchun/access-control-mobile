@@ -1,4 +1,4 @@
-import { buildURL, buildFullPath, settle } from "@/typings/extend/axios";
+import { buildURL, buildFullPath, settle } from "@/types/extend/axios";
 import { AxiosHeaders, type AxiosAdapter, type AxiosResponse } from "axios";
 
 const adapter: AxiosAdapter = function (config) {
