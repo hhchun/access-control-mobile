@@ -10,7 +10,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import type { UniPopupInstance } from '@uni-helper/uni-ui-types';
-import type { SuccessResult } from '@/pages/mine/login';
+import type { SuccessResult } from './index';
 
 const popup = ref<UniPopupInstance | null>()
 
@@ -23,7 +23,7 @@ const close = () => {
 }
 
 const loginQuick = () => {
-    emit('success', {key:"xzx"})
+    emit('success', { key: "xzx" })
 }
 
 const emit = defineEmits<{

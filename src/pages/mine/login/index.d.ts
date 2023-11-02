@@ -1,9 +1,11 @@
-import Login from "@/pages/mine/login/index.vue";
+import Login from "./index.vue";
 
-declare type LoginModal = InstanceType<typeof Login>;
+declare type LoginInstance = InstanceType<typeof Login>;
 
-declare interface SuccessResult {
+interface SuccessResult {
   key: string;
 }
 
-export { SuccessResult, Login, LoginModal };
+export default Login;
+
+export { LoginInstance, SuccessResult };
