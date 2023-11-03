@@ -48,10 +48,7 @@ import { ref } from 'vue';
 import Login from "./login";
 import type { LoginInstance, SuccessResult as LoginSuccessResult } from "./login";
 
-
-
 const _login = ref<LoginInstance>();
-
 let loginStatus = ref(false);
 
 function login() {

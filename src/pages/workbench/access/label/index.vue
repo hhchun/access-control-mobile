@@ -4,7 +4,7 @@
             <text>标签管理</text>
         </view>
         <view class="main">
-            <mescroll-body @init="mescrollInit" @down="downCallback" @up="upCallback" >
+            <mescroll-body ref="mescroll" @down="down">
                 <uni-swipe-action>
                     <uni-swipe-action-item v-for="i in 100" :key="i">
                         <template v-slot:left>
@@ -30,18 +30,14 @@
 import { onPullDownRefresh, onReachBottom } from '@dcloudio/uni-app';
 
 import MescrollBody from "mescroll-uni/mescroll-body.vue";
+import MescrollUni from "mescroll-uni/mescroll-uni.vue";
 
+import type { MescrollGeneralEvent, MescrollInstance } from "mescroll-uni/mescroll-body.vue";
+import { ref } from 'vue';
+const mescroll = ref<MescrollInstance>();
 
-const mescrollInit = () => {
-    console.log("mescrollInit");
-}
-
-const downCallback = () => {
-    console.log("downCallback");
-}
-
-const upCallback = () => {
-    console.log("upCallback");
+function down(event: MescrollGeneralEvent) {
+    console.log("");
 }
 
 </script>
@@ -54,7 +50,7 @@ const upCallback = () => {
 }
 
 .header {
-    /* flex: 0 0 auto; */
+    flex: 0 0 auto;
 }
 
 .main {
@@ -63,7 +59,7 @@ const upCallback = () => {
 }
 
 .footer {
-    /* flex: 0 0 auto; */
+    flex: 0 0 auto;
 }
 
 page {
